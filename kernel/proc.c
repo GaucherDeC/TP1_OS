@@ -253,7 +253,7 @@ void
 userinit(void)
 {
   struct proc *p;
-  acquire(prio_lock);
+  acquire(&prio_lock);
   p = allocproc();
   initproc = p;
   
