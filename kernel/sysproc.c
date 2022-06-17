@@ -82,7 +82,7 @@ sys_nice(void){
     return -1;
   if ((priority < 0) || (priority >= NPRIO))
     return -1;
-  return nice(pid, priority)
+  return nice(pid, priority);
 }
 
 uint64
