@@ -721,6 +721,11 @@ either_copyout(int user_dst, uint64 dst, void *src, uint64 len)
   }
 }
 
+int nice(int pid, int priotity)
+{
+  return -1;
+}
+
 // Copy from either a user address, or kernel address,
 // depending on usr_src.
 // Returns 0 on success, -1 on error.
