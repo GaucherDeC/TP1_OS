@@ -486,7 +486,17 @@ sys_pipe(void)
 uint64
 sys_create_mutex(void)
 {
-  return -1;
+  struct file *f;
+  int fd;
+  if ((f = filealloc()) == 0 || (fd = fdalloc(f)) < 0)
+  {
+    if(f)
+      fileclose(f);
+    return -1;
+  }
+  f->type = FD_MUTEX;
+  initsleeplock(&f->mutex, "sleeplock");
+  return fd;
 }
 
 uint64
